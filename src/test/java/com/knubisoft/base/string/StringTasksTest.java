@@ -28,7 +28,7 @@ public class StringTasksTest {
         assertEquals("He, Worldllo", instance.insertStringInMiddle("Hello", ", World"));
         assertEquals("St. \n" +
                         " Andersan 7/10Tomeu",
-                instance.insertStringInMiddle("St. Tomeu", System.lineSeparator() + " Andersan 7/10"));
+                instance.insertStringInMiddle("St. Tomeu", "\n" + " Andersan 7/10"));
     }
 
     @Test
@@ -163,8 +163,8 @@ public class StringTasksTest {
 
     @Test
     public void getCountRepeatableStringSuccessful() {
-        assertEquals("11123121211111111", instance.getCountRepeatableString("Hello, World!"));
-        assertEquals("123456789123123456789121234567891123456789123456781234567123456123451234123121", instance.getCountRepeatableString("aaaaaaaaaaaa"));
+        assertEquals("1112111121311", instance.getCountRepeatableString("Hello, World!"));
+        assertEquals("123456789123", instance.getCountRepeatableString("aaaaaaaaaaaa"));
         assertEquals("1", instance.getCountRepeatableString("0"));
         assertEquals("", instance.getCountRepeatableString(""));
     }

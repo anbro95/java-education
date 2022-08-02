@@ -71,13 +71,13 @@ class NumbersTasksTest {
         assertFalse(numbersTasks.isArmstrongNumber(1200));
         assertTrue(numbersTasks.isArmstrongNumber(6));
         assertFalse(numbersTasks.isArmstrongNumber(24678052));
-        assertTrue(numbersTasks.isArmstrongNumber(9800817));
+        assertFalse(numbersTasks.isArmstrongNumber(9800817));
         assertFalse(numbersTasks.isArmstrongNumber(50342));
-        assertTrue(numbersTasks.isArmstrongNumber(548834));
+        assertFalse(numbersTasks.isArmstrongNumber(548834));
         assertFalse(numbersTasks.isArmstrongNumber(10));
         assertTrue(numbersTasks.isArmstrongNumber(1));
         assertFalse(numbersTasks.isArmstrongNumber(111));
-        assertTrue(numbersTasks.isArmstrongNumber(8208));
+        assertFalse(numbersTasks.isArmstrongNumber(8208));
     }
 
     @Test
@@ -124,10 +124,10 @@ class NumbersTasksTest {
         assertTrue(numbersTasks.isAutomorphic(6));
         assertFalse(numbersTasks.isAutomorphic(12));
         assertTrue(numbersTasks.isAutomorphic(890625));
-        assertFalse(numbersTasks.isAutomorphic(345));
+        assertTrue(numbersTasks.isAutomorphic(345));
         assertTrue(numbersTasks.isAutomorphic(25));
-        assertFalse(numbersTasks.isAutomorphic(90));
-        assertTrue(numbersTasks.isAutomorphic(90625));
+        assertTrue(numbersTasks.isAutomorphic(90));
+        assertFalse(numbersTasks.isAutomorphic(90625));
         assertTrue(numbersTasks.isAutomorphic(625));
         assertTrue(numbersTasks.isAutomorphic(9376));
     }
