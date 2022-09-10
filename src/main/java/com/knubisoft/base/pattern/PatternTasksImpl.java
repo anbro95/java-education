@@ -1,16 +1,30 @@
 package com.knubisoft.base.pattern;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PatternTasksImpl implements PatternTasks {
 
     @Override
     public boolean haveSetOfCharacters(String text) {
-        return false;
-    }
+        if(text == null || text == "" || text == " ") {
+            throw new IllegalArgumentException();
+        }
+
+        Pattern pattern = Pattern.compile("\\W");
+        Matcher matcher = pattern.matcher(text);
+        return !matcher.find();
+    }  //
 
     @Override
     public String matchByCharacters(String text) {
-        return null;
-    }
+        if(text == null) {
+            throw new IllegalArgumentException();
+        }
+        Pattern pattern = Pattern.compile("pq*");
+        Matcher matcher = pattern.matcher(text);
+        return matcher.matches() ? "Found a match!" : "Not matched!";
+    }  //
 
     @Override
     public String matchStartAndEnd(String text) {

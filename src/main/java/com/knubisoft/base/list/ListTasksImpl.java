@@ -48,28 +48,35 @@ public class ListTasksImpl implements ListTasks {
     @Override
     public List<Long> merge(List<Integer> first, List<Long> second, List<String> third) {
         if(first == null || second == null || third == null)
-            throw new NullPointerException();
+            throw new IllegalArgumentException();
         List<Long> res = new ArrayList<>();
         try{
             for (int i = 0; i < first.size(); i++) {
+                if(first.get(i) == null) {
+                    throw new NullPointerException();
+                }
                     res.add(i, Long.parseLong(String.valueOf(first.get(i))));
             }
 
             for (int i = 0; i < second.size(); i++) {
+                if(second.get(i) == null) {
+                    throw new NullPointerException();
+                }
                 res.add(i + first.size() - 1, Long.parseLong(String.valueOf(second.get(i))));
             }
 
             for (int i = 0; i < third.size(); i++) {
+                if(third.get(i) == null) {
+                    throw new NullPointerException();
+                }
                 res.add(i + first.size() + second.size() - 1, Long.parseLong(third.get(i)));
             }
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException();
-        } catch (NullPointerException e) {
-            throw new NullPointerException();
         }
 
         return res;
-    }
+    }  //
 
     @Override
     public int findMaxValue(List<Integer> first, List<Integer> second, List<Integer> third) {
@@ -174,7 +181,9 @@ public class ListTasksImpl implements ListTasks {
     @Override
     public List<Integer> flatMapWithoutNulls(List<List<Integer>> list) {
 //        List<List<Integer>> clone = list.stream().map(inner -> inner.stream().filter(item -> null != item)).collect(Collectors.toList()).stream().collect(Collectors.toList());
-
+//        list.stream()
+//                .map(lists -> lists.stream().sorted().collect(Collectors.toList()))
+//                .collect(Collectors.toList());
         return new ArrayList<Integer>();
 
     }
@@ -198,20 +207,21 @@ public class ListTasksImpl implements ListTasks {
 
     @Override
     public List<String> shuffle(List<String> originalStrings) {
-        List<String> res = new ArrayList<>();
-        List<Integer> randoms = new ArrayList<>();
-        HashSet<Integer> set = new HashSet<>();
+//
+//        Collections.shuffle(originalStrings);
+//        return originalStrings;
+
+
         Random rand = new Random();
         for (int i = 0; i < originalStrings.size(); i++) {
-            int a = rand.nextInt(originalStrings.size()-1);
-            randoms.add(a);
+            int index = rand.nextInt(originalStrings.size());
+            String temp = originalStrings.get(index);
+            originalStrings.set(index, originalStrings.get(i));
+            originalStrings.set(i, temp);
         }
 
-        for (int i = 0; i < originalStrings.size(); i++) {
-            res.add(randoms.get(i), originalStrings.get(i));
-        }
-        return res;
-    }
+        return originalStrings;
+    }  //
 
     @Override
     public String getLastElement(LinkedList<String> list) {

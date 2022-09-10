@@ -1,13 +1,27 @@
 package com.knubisoft.base.reflection;
 
+import lombok.SneakyThrows;
+
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
 public class ReflectionTasksImpl implements ReflectionTasks {
 
+    @SneakyThrows
     @Override
     public Object createNewInstanceForClass(Class<?> cls) {
-        return null;
+        Object o;
+
+            Class clazz = cls.getClass();
+            Class[] param1 = {String.class};
+            Class[] param2 = {String.class, String.class};
+            Class[] param3 = {String.class, String.class, String.class};
+            o = clazz.getConstructor(param1).newInstance("tablename");
+
+
+
+        return o;
     }
 
     @Override
